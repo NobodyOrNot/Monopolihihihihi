@@ -54,7 +54,3 @@ plateau = {
     38: Property(name="taxe-de-luxe", color="darkgrey"),
     39: Property(name="paix", color="blue", color_set_size=2, price=400, rent=[50, 200, 600, 1400, 1700, 2000], house=200, mortgage=200),
 }
-
-# Usage example
-for position, property in plateau.items():
-    print(f"Position {position}: {property.name}, {property.color}")

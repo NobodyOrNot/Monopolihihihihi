@@ -20,18 +20,25 @@ def game(NbrPlayer):
 
     for i in range(100):
         for player in player_list:
+
+            isDubble = True
             while isDubble:
                 i += 1
-                player.case, isDubble = launch_dice()
+                move, isDubble = launch_dice()
+                player.case += move
 
                 if i > 2:
                     player.case = 10
 
-                plateau[player.case]["stop"] += 1
+                plateau[player.case].stop += 1
 
 def launch_dice():
     dice_1 = randint(1,6)
     dice_2 = randint(1,6)
+
+    result = dice_1 + dice_2
+    isDubble = dice_1 == dice_2
+
     return result, isDubble
 
 def show_graph():
@@ -45,8 +52,8 @@ def show_graph():
     y = []
     
     for i in range(len(plateau)):
-        x.append(plateau[i]["name"]) 
-        y.append(plateau[i]["stop"])
+        x.append(plateau[i].name) 
+        y.append(plateau[i].stop)
 
     # Plot the data
     ax.plot(x, y)
